@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e9e9;
+  }
+  
+  nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    place-content: space-between;
+    flex-wrap: nowrap;
+    flex-flow: row;
+  }
+
+  .common{
+    display: flex;
+    align-items: center;
+    
+  }
+
+  .nav-left{
+    padding-left: 3%;
+    gap: 5%;
+  }
+
+  .nav-right{
+    padding-right: 3%;
+    
+  }
+
+  #currentTime{
+    font-size: 1.5em;
+    width: 10vw;
+  }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-areas: 
+      "header header"
+      "left right"
+      "footer footer";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: 100vh;
+  }
+  
+  .header {
+    grid-area: header;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .footer{
+    grid-area: footer;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .left {
+    grid-area: left;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .right {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 40% 60%;
+    gap: 10px;
+  }
+  
+  .right-top,
+  .right-bottom {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right-bottom{
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+  }
+  
+ 
+  #map {
+    border: 1px solid #ddd;
+    padding: 0.5%;
+    border: 2px solid red;
+    background-color: #f0f8ff;
+    overflow-x: auto; 
+}
+
+svg {
+    width: 100%;
+    height: auto; 
+    max-width: 100%; 
+    border: 2px solid black;
+    background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.8)), url('FQNc_YSakAEt1Eh.webp');
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-size: cover;
+}
+
+/* Stations */
+.station {
+    cursor: pointer;
+}
+
+.circle-station-yellow{
+  fill: yellow;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-violet{
+  fill: violet;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-red{
+  fill: red;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-blue{
+  fill: blue;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-pink{
+  fill: pink;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-magenta{
+  fill: magenta;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-green{
+  fill: green;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-orange{
+  fill: orange;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-grey{
+  fill: grey;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.circle-station-aqua{
+  fill: aqua;
+  stroke: black;
+  stroke-width: 0.5;
+  stroke-opacity: 0.4;
+}
+
+.connection{
+  fill:  black;
+  opacity: 0.7;
+}
+
+/* Metro lines */
+.metro-line-blue {
+    stroke: blue;
+    stroke-width: 0.3%;
+}
+
+.metro-line-yellow {
+    stroke: yellow;
+    stroke-width: 0.3%;
+}
+
+.metro-line-violet {
+    stroke: violet;
+    stroke-width: 0.3%;
+}
+
+.metro-line-pink {
+    stroke: pink;
+    stroke-width: 0.3%;
+}
+
+.metro-line-magenta {
+    stroke: magenta;
+    stroke-width: 0.3%;
+}
+
+.metro-line-red {
+    stroke: red;
+    stroke-width: 0.3%;
+}
+
+.metro-line-green {
+    stroke: green;
+    stroke-width: 0.3%;
+}
+
+.metro-line-orange {
+    stroke: orange;
+    stroke-width: 0.3%;
+}
+
+.metro-line-grey {
+    stroke: grey;
+    stroke-width: 0.3%;
+}
+
+.metro-line-aqua {
+    stroke: aqua;
+    stroke-width: 0.3%;
+}
+
+/* Tooltip styling */
+#tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    pointer-events: none;
+    opacity: 0.9;
+    transform: translate(-50%, -120%);
+    white-space: nowrap;
+}
+
+#controls button {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+}
+
+label{
+    font-size: 1.6rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    float: left;
+    width: 100%; 
+}
+
+#resultText{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.right-top{
+  width: 100%;
+}
+
+#controls{
+  width: 60%;
+}
+
+
+ /* Responsive Adjustments */
+ @media (max-width: 1000px) {
+  .grid-container {
+    grid-template-areas: 
+      "header"
+      "left"
+      "right"
+      "footer";
+    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-columns: 1fr;
+  }
+  
+  .right {
+    flex-direction: column;
+   
+  }
+}
+
+@media (max-width: 600px){
+  #controls {
+    width: 80%;
+  }
+
+  #head-tit{
+    font-size: 1.2rem;
+  }
+
+  #currentTime{
+    font-size: 1.2rem;
+  }
+
+  .nav-right{
+    padding-right: 40px;
+  }
+
+}
+
+@media (max-width: 800px){
+  .nav-right{
+    padding-right: 50px;
+  }
+}
+
